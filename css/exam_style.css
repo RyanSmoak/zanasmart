@@ -271,6 +271,19 @@ body.dark {
     border-radius: 15px;
 }
 
+.exam_title{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--grey-color);
+    font-family: "Poppins", sans-serif;
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 10px;
+    width: 69%;
+    height: 150%;
+    margin-left: 15%;
+    padding:30px;
+}
 
 div.form-block{
     display: grid;

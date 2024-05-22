@@ -8,6 +8,8 @@ $username = "root";
 $password = ""; 
 $dbname = "zana";
 
+session_start();
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
@@ -41,5 +43,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+//A function to get the last inserted Id from the database
+function get_last_id($conn){
+    $sql = "SELECT LAST_INSERT_ID()";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    return $row['LAST_INSERT_ID()'];
+}
+$_SESSION['exam_id']=get_last_id($conn);
+
 $conn->close();
-?>
+

@@ -17,13 +17,14 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $exam_id=$_POST['exam_id'];
     $question_num = $_POST["question_num"];
     $question_alp = $_POST["question_alp"];
     $question = $_POST["question"];
     $answer_scheme = $_POST["answer_scheme"];
 
-    $sql = "INSERT INTO question_paper (question_num, question_alp, question, answer_scheme)
-    VALUES ('$question_num', '$question_alp', '$question', '$answer_scheme')";
+    $sql = "INSERT INTO question_paper (exam_id,question_num, question_alp, question, answer_scheme)
+    VALUES ('$exam_id','$question_num', '$question_alp', '$question', '$answer_scheme')";
 
     if ($conn->query($sql) === TRUE) {
         $response['status']=1;

@@ -119,6 +119,10 @@
       </div>
     </nav>
 
+    <div class="exam_title">
+        <p>Exam Title<br></p>
+    </div>
+
     <div class="float-container">
     <section class="q_box" id="set_content">
         <div class="set_questions" id="set_questions">
@@ -138,7 +142,7 @@
               <div class="question-block">
                 <div class="form-group" id="question_paper">
                         <label for="exam_id">Exam No.</label>
-                        <input type="number" name="exam_id" id="exam_id" value="{{ number }}" disabled>
+                        <input type="number" name="exam_id" id="exam_id" value="1">
                         <label for="question_num">No.</label >
                         <input type="number" name="question_num" id="question_num" placeholder="Number">
                         <label for="question_alp">Sub</label>
@@ -174,6 +178,7 @@
     <script src="js/exam_script.js"></script>
     <script>
       window.onload=()=>{
+            getExamId()
             sub();
             fetchQuestions()//To fetch all the questions then put them
       }
@@ -237,6 +242,17 @@
             console.error('Error:', error);
             });
     }
+    function  getExamId()
+      {
+        fetch('./retrieve_id.php',{
+          method:'GET'
+        })
+        .then(response=>response.text())
+        .then(data=>{
+          data=JSON.parse(data)
+          document.getElementById('exam_id').value=data.exam_id;
+        })
+      }
       </script>      
   </body>
 </html>

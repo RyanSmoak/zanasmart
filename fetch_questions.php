@@ -8,6 +8,9 @@ $username = "root";
 $password = ""; 
 $dbname = "zana";
 
+session_start();
+$exam_id=$_SESSION['exam_id'];
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
@@ -15,7 +18,7 @@ if ($conn->connect_error) {
 }
 //To fetch all questions in the question_paper table
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $sql = "SELECT * FROM question_paper";
+    $sql = "SELECT * FROM question_paper WHERE exam_id='$exam_id' ";
     $result = $conn->query($sql);
     $questions = [];
     if ($result->num_rows > 0) {

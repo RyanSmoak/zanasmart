@@ -1,28 +1,21 @@
 <?php
 $response=[
     'status'=>0,
-    'message'=>''
+    'message'=>'',
+    'exam_id'=>null
 ];
-$servername = "localhost";
-$username = "root";
-$password = ""; 
-$dbname = "zana";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+session_start();
+@$exam_id=$_SESSION['exam_id'];
+if(isset($exam_id))
+{
+    $response['message']="Data retreived successfully";
+    $response['status']=1;
+    $response['exam_id']=$exam_id;
+    echo json_encode($response);
 }
-
-// Retrieve the most recent number from the database
-$sql = "SELECT exam_number FROM exams ORDER BY exam_number DESC LIMIT 1";
-$result = $conn->query($sql);
-$exam_number = '';
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $exam_number = $row['exam_number'];
+else{
+    $response['message']="Data not found";
+    $response['status']=0;
+    echo json_encode($response);
 }
-
-$conn->close();
 ?>
