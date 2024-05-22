@@ -44,8 +44,8 @@ body.dark {
   display: flex;
   align-items: center;
   column-gap: 10px;
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 30px;
+  font-weight: 700;
   color: var(--blue-color);
 }
 .navbar img {
@@ -554,3 +554,79 @@ div.question-block{
   margin: 5px 0 0 0;
 }
 
+.form-group #exam_id{
+  pointer-events: none;
+  background-color: #3333335f;
+}
+
+#my_exams{
+  width: 85%;
+  margin-left: 14.3%;
+  margin-top: 5px;
+  padding: 15px;
+  transition: all 0.5s ease;
+  border: 0px rgba(0, 0, 0, 0.233); /* add a border */
+  background-color: white;
+  border-style: groove;
+  border-radius: 15px;
+}
+
+.exam_table{
+  width: 100%;
+  margin: 25px 0;
+  border-collapse:collapse;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+table thead tr:first-child th:first-child {
+  border-top-left-radius: 10px;
+}
+
+table thead tr:first-child th:last-child {
+  border-top-right-radius: 10px;
+}
+
+
+
+.exam_table th{
+  margin-top: 0px;
+  padding: 10px;
+  text-align: center;
+}
+
+.exam_table td{
+  text-align: center;
+  background-color: rgba(128, 128, 128, 0.199);
+  padding: 10px;
+}
+
+.exam_table thead tr{
+  background-color: #4070f4b7;
+    color: #ffffff;
+    text-align: center;
+}
+
+.exam_table th, .exam_table td {
+    padding: 12px 15px;
+}
+
+.exam_table tbody tr:nth-of-type(odd) {
+  background-color: #f3f3f3;
+}
+
+.exam_table tbody tr:last-of-type {
+  border-bottom: 2px solid #4070f4b7;
+  border-radius: 10px;
+}
+
+.exam_table tbody tr:hover {
+  background-color: rgba(64, 64, 64, 0.178);
+}
+
+#my_exams h1{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--grey-color);
+    font-family: "Poppins", sans-serif;
+}
