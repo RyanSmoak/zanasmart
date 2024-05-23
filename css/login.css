@@ -1,0 +1,166 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #f6f1f8c2, #0280d4);
+}
+
+.login-box {
+    display: flex;
+    width: 950px;
+    height: 600px;
+    box-shadow: 20px 0 100px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.left {
+    width: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.content {
+    padding: 20px;
+}
+
+.content h1 {
+    margin-bottom: 10px;
+    margin-top: 1px;
+    font-size: 50px;
+    color: #333;
+}
+
+.content h1 span {
+    color: #3498db;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn.login {
+    background: #3498db;
+    color: #fff;
+    width: 100%;
+    margin-left: 10%;
+}
+
+button[type="submit"]:hover{
+    background-color: #4070f4ca;
+    color: var(--white-color);
+}
+
+.right{
+    width: 50%;
+    background-image: url("images/sign-in-01.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: linear-gradient(180deg, #0491bf,  #f8eefcc2);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.line1{
+    margin-top: 10%;
+}
+
+.right p{
+    color: #fff;
+    font-size: 1.5rem;
+    margin-left: 20px;
+}
+
+.right img{
+    width: 40%;
+    height: 30%;
+    margin-top: 20%;
+    margin-left: 30%;
+}  
+
+.line1 {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.549),  #0505ddc2);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-family: "Poppins", sans-serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    overflow: hidden;
+    margin-left: 20%;
+    border-right: .1em solid white;
+    white-space: nowrap; 
+    width: 10;
+    animation: 
+        typing-l1 2.3s steps(30, end) forwards;
+}
+
+.line2{
+    background: linear-gradient(45deg, #0505ddc2,rgba(0, 0, 0, 0.831));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem; 
+    font-weight: 400;
+    overflow: hidden;
+    margin-left: 30%;
+    border-right: .1em solid white;
+    white-space: nowrap; 
+    width: 0;
+    animation: 
+        typing-l2 2.3s steps(30, end) forwards,
+        blink 1s infinite ;
+    animation-delay: 1.8s;
+}
+
+/* The typing effect */
+@keyframes typing-l2 {
+    from { width: 0 }
+    to { width:45% }
+}
+
+@keyframes typing-l1 {
+    from { width: 0 }
+    to { width:62% }
+}
+
+@keyframes blink{
+    from { border-color: transparent }
+    to { border-color: white; }
+}
