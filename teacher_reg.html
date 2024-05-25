@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        body, html {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(45deg, #f6f1f8c2, #0280d4);
+    }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Account</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="reg-container">
+        <div class="left">
+            <div class="welcome">
+                <img width="100" height="100" src="https://img.icons8.com/plasticine/100/teacher.png" alt="teacher"/>
+                <h1>Esteemed educator, welcome to</h1>
+                <h2>ZanaSmart</h2>
+                <div class="line"></div>
+                <p>
+                    ZanaSmart revolutionizes education with AI-powered solutions for automated exam setting and grading. Our platform provides instant feedback, detailed performance insights, and supports course management, interactive learning, and collaboration, allowing educators to focus more on teaching. Join us to transform education with technology.
+                </p>
+                </div>
+        </div>
+        <div class="reg-right">
+            <div class="form-container">
+                <h2>We love all our educators! <br>Create an account with us</h2>
+                <p>Don't have an account? It takes less than a minute. If you already have an account <a href="login.html">Login</a>.</p>
+                <form action="registration.php" method="POST" enctype="multipart/form-data" id="register-form">
+                    <div class="input-group">
+                        <input type="text" id="license_no" name="license_no" placeholder="License Number" required>
+                        <i class="fa fa-check success"></i>
+                    </div>
+                    <div class="selections">
+                        <select name="title" id="title" required>
+                            <option value="" disabled selected>Preferred Title</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+                            <option value="Miss">Miss</option>
+                            <option value="Dr">Dr</option>
+                            <option value="Prof">Prof</option>
+                        </select>
+                        <i class="fa fa-check success"></i>
+
+                        <select name="teaching_level" id="teaching_level" required>
+                            <option value="" disabled selected>Teaching Level</option>
+                            <option value="Primary">Primary</option>
+                            <option value="Secondary">Secondary</option>
+                            <option value="Higher_level">Higher Level</option>
+                        </select>
+                        <i class="fa fa-check success"></i>
+                    </div><br>
+                    <div class="input-group">
+                        <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+                        <i class="fa fa-check success"></i>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+                        <i class="fa fa-times error"></i>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" name="email" placeholder="Email address" required>
+                        <i class="fa fa-check success"></i>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                        <i class="fa fa-check success"></i>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-enter password" required>
+                        <i class="fa fa-check success"></i>
+                    </div>
+                    <button type="submit" class="btn">CREATE ACCOUNT</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--a pop up to congratulate user on creating an account -->
+    <div class="overlay" id="overlay">
+        <div class="user_choice" id="user_choice">
+            <div class="choice_content">
+                <img src="images/icons8-congratulations.gif" alt="">
+                <div class="choice-header">
+                    <h2>Welcome to the family!</h2>
+                    <span class="close"></span>
+                    <p>Congratulations! Your account has been created successfully.</p>
+                </div>
+                <div class="choice-footer">
+                    <a href="teacher_side.html" onclick="close_popup()">Take the next step</a>
+                </div>
+            </div>
+        </div>
+    <script>
+        //a script to display the modal
+        window.onload=()=>{
+            document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+      
+            fetch('registration.php', {
+            method: 'POST',
+            body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+            console.log('Server Response:', data);  // Add this line
+            if (data.status===1){
+                let popup=document.getElementById('user_choice');
+                let overlay = document.getElementById('overlay');
+                overlay.style.display='block';
+                popup.style.display='block';
+            }
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            });
+        });
+        }
+
+        function choice_popup(){
+                let popup=document.getElementById('user_choice');
+                overlay.style.display='block';
+                popup.style.display='block';
+        }
+
+        //a script to close the modal
+        document.querySelector('.choice-footer').addEventListener('click', function(){
+            let popup=document.getElementById('user_choice');
+            overlay.style.display='none';
+            popup.style.display='none';
+        });
+    </script>
+</body>
+<script>
+    //a script to capture response from server and display in a pop up
+    const form = document.getElementById('register-form');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const response = await fetch('registration.php', {
+            method: 'POST',
+            body: formData
+        });
+        const result = await response.json();
+        alert(result.message);
+    });
+</script>
+</html>

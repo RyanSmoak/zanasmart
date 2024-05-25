@@ -11,7 +11,7 @@
         <div class="login-box">
             <div class="left">
                 <div class="content">
-                    <h1>Hello,<br> <span>welcome!</span><br></h1>
+                    <h1>Hello,<br> <span>welcome back!</span><br></h1>
                     <form action="login.php" method="POST" enctype="multipart/form-data" id="login_form">
                         <div class="input-group">
                             <label for="email">Email address/Username</label>
@@ -25,7 +25,7 @@
                             <button type="submit" class="btn login">Login</button>
                         </div>
                     </form>
-                    <a href="register.php">Don't have an account? Register here</a><br>
+                    <a href=# onclick="choice_popup()">Don't have an account? Register here</a><br>
                     <br>
                 </div>
             </div>
@@ -38,5 +38,78 @@
             </div>
         </div>
     </div>
+
+    <!--a pop up that gives a new user the choice between teacher and student-->
+    <div class="overlay" id="overlay">
+        <div class="user_choice" id="user_choice">
+            <div class="choice_content">
+                <img width="64" height="64" src="https://img.icons8.com/external-filled-outline-satawat-anukul/64/external-designthinking-design-thinking-filled-outline-filled-outline-satawat-anukul.png" alt="external-designthinking-design-thinking-filled-outline-filled-outline-satawat-anukul"/>
+                <div class="choice-header">
+                    <h2>Account Type</h2>
+                    <span class="close"></span>
+                    <p>Are you a teacher or a student?</p>
+                </div>
+                <div class="choice-body">
+                    <div class="teacher_button">
+                        <img src="images/icons8-teacher-100.png"><br>
+                        <p>Teacher</p>
+                    </div>
+                    <div class="student_button">
+                        <img src="images/icons8-man-reading-a-book-100.png"><br>
+                        <p>Student</p>
+                    </div>
+                </div>
+                <div class="choice-footer">
+                    <a href="#" onclick="close_popup()">Not done yet? Close popup </a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <script>
+
+            //a script to open a webpage when a div is clicked
+            document.querySelector('.teacher_button').addEventListener('click', function(){
+                window.location.href='teacher_reg.html';
+            });
+
+            document.querySelector('.student_button').addEventListener('click', function(){
+                window.location.href='student_reg.html';
+            });
+            //a script to display the modal
+        window.onload=()=>{
+            document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+      
+            fetch('registration.php', {
+            method: 'POST',
+            body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+            // alert(data);  // Display the response from the server in an alert box
+            choice_popup();
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            });
+        });
+        }
+
+        function choice_popup(){
+                let popup=document.getElementById('user_choice');
+                overlay.style.display='block';
+                popup.style.display='block';
+        }
+
+        document.querySelector('.choice')
+
+        function close_popup(){
+            let popup=document.getElementById('user_choice');
+            overlay.style.display='none';
+            popup.style.display='none';
+        }
+    </script>
 </body>
 </html>
