@@ -6,21 +6,21 @@
     <!-- Boxicons CSS -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>Teacher's side</title>
-    <link rel="stylesheet" href="css/exam_style.css" />
+    <link rel="stylesheet" href="../css/exam_style.css" />
   </head>
   <body>
     <!-- navbar -->
     <nav class="navbar">
       <div class="logo_item">
         <i class="bx bx-menu" id="sidebarOpen"></i>
-        <img src="images/logo.jpeg" alt=""></i>ZanaSmart
+        <img src="../images/logo.jpeg" alt=""></i>ZanaSmart
       </div>
 
       <div class="navbar_content">
         <i class="bi bi-grid"></i>
         <i class='bx bx-sun' id="darkLight"></i>
         <i class='bx bx-bell' ></i>
-        <img src="images/bw_profile.gif" alt="" class="profile" />
+        <img src="../images/bw_profile.gif" alt="" class="profile" />
       </div>
     </nav>
 
@@ -175,7 +175,7 @@
     </section>
     </div>
     <!-- JavaScript -->
-    <script src="js/exam_script.js"></script>
+    <script src="../js/exam_script.js"></script>
     <script>
       window.onload=()=>{
             getExamId()
@@ -188,7 +188,7 @@
       
         var formData = new FormData(this);
       
-        fetch('questions_conn.php', {
+        fetch('../php/questions_conn.php', {
           method: 'POST',
           body: formData
         })
@@ -229,7 +229,7 @@
     function fetchQuestions()
     {
             refreshQ();//clear the div
-            fetch('fetch_questions.php')
+            fetch('../php/fetch_questions.php')
             .then(response => response.json())
             .then(data => {
             let set_questions=document.getElementById('set_q');
@@ -244,7 +244,7 @@
     }
     function  getExamId()
       {
-        fetch('./retrieve_id.php',{
+        fetch('../php/retrieve_id.php',{
           method:'GET'
         })
         .then(response=>response.text())

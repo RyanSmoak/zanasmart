@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Boxicons CSS -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <title>Teacher's side</title>
+    <link rel="stylesheet" href="../css/exam_style.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar">
+      <div class="logo_item">
+        <i class="bx bx-menu" id="sidebarOpen"></i>
+        <img src="../images/logo.jpeg" alt=""></i>ZanaSmart
+      </div>
+
+      <div class="navbar_content">
+        <i class="bi bi-grid"></i>
+        <i class='bx bx-sun' id="darkLight"></i>
+        <i class='bx bx-bell' ></i>
+        <img src="../images/bm_profile.gif" alt="" class="profile" />
+      </div>
+    </nav>
+
+    <!-- sidebar -->
+    <nav class="sidebar">
+      <div class="menu_content">
+        <ul class="menu_items">
+          <div class="menu_title menu_dahsboard"></div>
+          <li class="item">
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class="bx bx-home-alt"></i>
+              </span>
+              <span class="navlink">Home</span>
+              <i class="bx bx-chevron-right arrow-left"></i>
+            </div>
+
+            <ul class="menu_items submenu">
+              <a href="#" class="nav_link sublink">Nav Sub Link</a>
+              <a href="#" class="nav_link sublink">Nav Sub Link</a>
+              <a href="#" class="nav_link sublink">Nav Sub Link</a>
+              <a href="#" class="nav_link sublink">Nav Sub Link</a>
+            </ul>
+          </li>
+          <!-- end -->
+          <li class="item">
+            <div href="#" class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class="bx bx-grid-alt"></i>
+              </span>
+              <span class="navlink">Overview</span>
+              <i class="bx bx-chevron-right arrow-left"></i>
+            </div>
+
+            <ul class="menu_items submenu">
+              <a href="#" class="nav_link sublink">Nav Sub Link</a>
+              <a href="#" class="nav_link sublink">Nav Sub Link</a>
+              <a href="#" class="nav_link sublink">Nav Sub Link</a>
+              <a href="#" class="nav_link sublink">Nav Sub Link</a>
+            </ul>
+          </li>
+          <!-- end -->
+        </ul>
+
+        <ul class="menu_items">
+          <div class="menu_title menu_editor"></div>
+          <li class="item" >
+            <a href="my_exams.html" class="nav_link">
+              <span class="navlink_icon">
+                <img width="20" height="20" src="https://img.icons8.com/external-tulpahn-outline-color-tulpahn/20/external-paper-stack-printing-tulpahn-outline-color-tulpahn.png" alt="external-paper-stack-printing-tulpahn-outline-color-tulpahn"/>
+              </span>
+              <span class="navlink">My Exams</span>
+            </a>
+          </li>
+          <li class="item">
+            <a href="examination.html" class="nav_link">
+              <span class="navlink_icon">
+                <i class="bx bx-cloud-upload"></i>
+              </span>
+              <span class="navlink">Create examination</span>
+            </a>
+          </li>
+          <li class="item">
+            <a href="#" class="nav_link">
+              <span class="navlink_icon">
+                <i class="bx bx-edit"></i>
+              </span>
+              <span class="navlink">Review examination</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="menu_items">
+          <div class="menu_title menu_setting"></div>
+          <li class="item">
+            <a href="#" class="nav_link">
+              <span class="navlink_icon">
+                <img width="20" height="20" src="https://img.icons8.com/pulsar-line/48/exam.png" alt="exam"/>
+              </span>
+              <span class="navlink">Results</span>
+            </a>
+          </li>
+          <li class="item">
+            <a href="#" class="nav_link">
+              <span class="navlink_icon">
+                <img width="20" height="20" src="https://img.icons8.com/ios/50/combo-chart--v1.png" alt="combo-chart--v1"/>
+              </span>
+              <span class="navlink">Analysis</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Sidebar Open / Close -->
+        <div class="bottom_content">
+          <div class="bottom expand_sidebar">
+            <span> Expand</span>
+            <i class='bx bx-log-in' ></i>
+          </div>
+          <div class="bottom collapse_sidebar">
+            <span> Collapse</span>
+            <i class='bx bx-log-out'></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="content" id="my_exams" >
+        <div class="content_title">
+          <h1>My Exams</h1>
+              <table class="exam_table">
+                <thead>
+                  <tr>
+                    <th>Exam Number</th>
+                    <th>School Name</th>
+                    <th>Exam Title</th>
+                    <th>Subject</th>
+                    <th>Grade/Form</th>
+                    <th>Total Marks</th>
+                    <th>Duration</th>
+                    <th>Set Date</th>
+                    <th>Due Date</th>
+                    <th>Instructions</th>
+                    <th>Completed</th>
+                  </tr>
+                </thead>
+                <tbody id="data">
+                </tbody>
+              </table>
+        </div>
+    </section>
+    <!-- JavaScript -->
+    <script src="../js/exam_script.js"></script>
+    <script>
+      window.onload=()=>{
+        getExams()
+      }
+      //function to load data from the php backend
+      function getExams()
+      {
+        fetch('../php/fetch_exams.php',{
+          method:'get'
+        })
+        .then(response=>response.text())
+        .then(response=>{
+          //use the response to create table rows
+          response=JSON.parse(response)
+          response.forEach(exam => {
+            createRow(exam)
+          });
+        })
+      }
+      //
+      function createRow(exam)
+      {
+        //Create the elements using DOM
+        let tr=document.createElement('tr')
+        let td1=document.createElement('td')
+        let td2=document.createElement('td')
+        let td3=document.createElement('td')
+        let td4=document.createElement('td')
+        let td5=document.createElement('td')
+        let td6=document.createElement('td')
+        let td7=document.createElement('td')
+        let td8=document.createElement('td')
+        let td9=document.createElement('td')
+        let td10=document.createElement('td')
+        let td11=document.createElement('td')
+        //Assign the values to the elements
+        td1.innerHTML=exam.exam_number
+        td2.innerHTML=exam.school_name
+        td3.innerHTML=exam.exam_title
+        td4.innerHTML=exam.subject
+        td5.innerHTML=exam.grade_form
+        td6.innerHTML=exam.total_marks
+        td7.innerHTML=exam.duration
+        td8.innerHTML=exam.set_date
+        td9.innerHTML=exam.due_date
+        td10.innerHTML=exam.instructions
+        td11.innerHTML=exam.completed
+        //Append the elements to the table row
+        tr.appendChild(td1)
+        tr.appendChild(td2)
+        tr.appendChild(td3)
+        tr.appendChild(td4)
+        tr.appendChild(td5)
+        tr.appendChild(td6)
+        tr.appendChild(td7)
+        tr.appendChild(td8)
+        tr.appendChild(td9)
+        tr.appendChild(td10)
+        tr.appendChild(td11)
+        //Append the table row to the table body
+        document.getElementById('data').appendChild(tr)
+      }
+    </script>
+  </body>
+</html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZanaSmart</title>
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
     <div class="stud-reg">
@@ -13,7 +13,7 @@
             <div class="form-container">
         <h2>Our students are our future and it's bright!<br>Create an account with us</h2>
         <p>Don't have an account? It takes less than a minute. If you already have an account <a href="#">Login</a>.</p>
-        <form action="stud_registration.php" method="POST" enctype="multipart/form-data" id="stud_reg_form">
+        <form action="../php/stud_registration.php" method="POST" enctype="multipart/form-data" id="stud_reg_form">
             <div class="input-group">
                 <input type="text" id="student_id" name="student_id" placeholder="Student ID" required>
             </div>
@@ -82,7 +82,7 @@
      <div class="overlay" id="overlay">
         <div class="user_choice" id="user_choice">
             <div class="choice_content">
-                <img src="images/icons8-congratulations.gif" alt="">
+                <img src="../images/icons8-congratulations.gif" alt="">
                 <div class="choice-header">
                     <h2>Welcome to the family!</h2>
                     <span class="close"></span>
@@ -102,7 +102,7 @@
 
             var formData = new FormData(this);
       
-            fetch('stud_registration.php', {
+            fetch('../php/stud_registration.php', {
             method: 'POST',
             body: formData
             })
@@ -133,7 +133,7 @@
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const formData = new FormData(form);
-        const response = await fetch('stud_registration.php', {
+        const response = await fetch('../php/stud_registration.php', {
             method: 'POST',
             body: formData
         });

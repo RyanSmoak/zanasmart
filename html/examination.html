@@ -6,21 +6,21 @@
     <!-- Boxicons CSS -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>Teacher's side</title>
-    <link rel="stylesheet" href="css/exam_style.css" />
+    <link rel="stylesheet" href="../css/exam_style.css" />
   </head>
   <body>
     <!-- navbar -->
     <nav class="navbar">
       <div class="logo_item">
         <i class="bx bx-menu" id="sidebarOpen"></i>
-        <img src="images/logo.jpeg" alt=""></i>ZanaSmart
+        <img src="../images/logo.jpeg" alt=""></i>ZanaSmart
       </div>
 
       <div class="navbar_content">
         <i class="bi bi-grid"></i>
         <i class='bx bx-sun' id="darkLight"></i>
         <i class='bx bx-bell' ></i>
-        <img src="images/bm_profile.gif" alt="" class="profile" />
+        <img src="../images/bm_profile.gif" alt="" class="profile" />
       </div>
     </nav>
 
@@ -123,7 +123,7 @@
         <div class="container">
             <div class="examination-creation-content">
             <p>Create Examination</p>
-            <form action="connection.php" method="POST" enctype="multipart/form-data" id="examForm">
+            <form action="../php/connection.php" method="POST" enctype="multipart/form-data" id="examForm">
               <div class="form-block" id="exam-form">
                 <div class="form-group">
                   <label for="exam_no">Exam Number:</label>  
@@ -176,7 +176,7 @@
         </div>
     </section>
     <!-- JavaScript -->
-    <script src="js/exam_script.js"></script>
+    <script src="../js/exam_script.js"></script>
     <script>
       window.onload=()=>{
         document.getElementById('examForm').addEventListener('submit', function(e) {
@@ -184,7 +184,7 @@
       
         var formData = new FormData(this);
       
-        fetch('connection.php', {
+        fetch('../php/connection.php', {
           method: 'POST',
           body: formData
         })

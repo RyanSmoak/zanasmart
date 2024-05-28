@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Boxicons CSS -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <title>Teacher's side</title>
-    <link rel="stylesheet" href="css/exam_style.css" />
+    <title>Student's side</title>
+    <link rel="stylesheet" href="css/student.css" />
   </head>
   <body>
     <!-- navbar -->
@@ -78,28 +78,9 @@
           <li class="item">
             <a href="examination.html" class="nav_link">
               <span class="navlink_icon">
-                <i class="bx bx-cloud-upload"></i>
-              </span>
-              <span class="navlink">Create examination</span>
-            </a>
-          </li>
-          <li class="item">
-            <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bx-edit"></i>
-              </span>
-              <span class="navlink">Review examination</span>
-            </a>
-          </li>
-        </ul>
-        <ul class="menu_items">
-          <div class="menu_title menu_setting"></div>
-          <li class="item">
-            <a href="#" class="nav_link">
-              <span class="navlink_icon">
                 <img width="20" height="20" src="https://img.icons8.com/pulsar-line/48/exam.png" alt="exam"/>
               </span>
-              <span class="navlink">Results</span>
+              <span class="navlink">My Grades</span>
             </a>
           </li>
           <li class="item">
@@ -107,7 +88,7 @@
               <span class="navlink_icon">
                 <img width="20" height="20" src="https://img.icons8.com/ios/50/combo-chart--v1.png" alt="combo-chart--v1"/>
               </span>
-              <span class="navlink">Analysis</span>
+              <span class="navlink">My Analysis</span>
             </a>
           </li>
         </ul>
@@ -125,6 +106,33 @@
         </div>
       </div>
     </nav>
+
+    <!-- Main Content -->
+    <div class="main_content">
+      <div class="header">
+        <h1>Examination</h1>
+        <p>Take your exams here</p><br>
+      </div>
+
+      <div class="exam_content">
+        <div class="exam">
+          <h2>Exam Title</h2>
+          <p>Instructions: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+          <div class="exam_questions">
+            <div class="question">
+              <h3>Question 1</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+              <div class="options">
+                <input type="radio" name="question1" id="option1" />
+                <label for="option1">Option 1</label>
+                <input type="radio" name="question1" id="option2" />
+                <label for="option2">Option 2</label>
+                <input type="radio" name="question1" id="option3" />
+                <label for="option3">Option 3</label>
+                <input type="radio" name="question1" id="option4" />
+                <label for="option4">Option 4</label>
+              </div>
+            </div>    
     <!-- JavaScript -->
     <script src="js/exam_script.js"></script>
   </body>

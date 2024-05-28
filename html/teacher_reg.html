@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create an Account</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -37,7 +37,7 @@
             <div class="form-container">
                 <h2>We love all our educators! <br>Create an account with us</h2>
                 <p>Don't have an account? It takes less than a minute. If you already have an account <a href="login.html">Login</a>.</p>
-                <form action="registration.php" method="POST" enctype="multipart/form-data" id="register-form">
+                <form action="../php/registration.php" method="POST" enctype="multipart/form-data" id="register-form">
                     <div class="input-group">
                         <input type="text" id="license_no" name="license_no" placeholder="License Number" required>
                         <i class="fa fa-check success"></i>
@@ -91,14 +91,14 @@
     <div class="overlay" id="overlay">
         <div class="user_choice" id="user_choice">
             <div class="choice_content">
-                <img src="images/icons8-congratulations.gif" alt="">
+                <img src="../images/icons8-congratulations.gif" alt="">
                 <div class="choice-header">
                     <h2>Welcome to the family!</h2>
                     <span class="close"></span>
                     <p>Congratulations! Your account has been created successfully.</p>
                 </div>
                 <div class="choice-footer">
-                    <a href="teacher_side.html" onclick="close_popup()">Take the next step</a>
+                    <a href="../teacher_side.html" onclick="close_popup()">Take the next step</a>
                 </div>
             </div>
         </div>
@@ -110,7 +110,7 @@
 
             var formData = new FormData(this);
       
-            fetch('registration.php', {
+            fetch('../php/registration.php', {
             method: 'POST',
             body: formData
             })
@@ -150,7 +150,7 @@
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const formData = new FormData(form);
-        const response = await fetch('registration.php', {
+        const response = await fetch('../php/registration.php', {
             method: 'POST',
             body: formData
         });
