@@ -1,3 +1,8 @@
+<?php
+// Start our session
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -125,6 +130,13 @@
         </div>
       </div>
     </nav>
+
+    <!--welcome page-->
+    <div class="welcome_page">
+      <div class="welcome_content">
+        <h1>Welcome, </h1>
+        <p><?php echo $_SESSION['first_name']; ?></p>
+      </div>
     <!-- JavaScript -->
     <script src="../js/exam_script.js"></script>
   </body>

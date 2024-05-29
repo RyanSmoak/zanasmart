@@ -244,6 +244,11 @@ body.dark {
   }
 }
 
+.welcome_content{
+  margin-left: 40%;
+  margin-top: 10%;
+}
+
 .h1{
     font-size: 30px;
     font-weight: 600;

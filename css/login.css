@@ -362,6 +362,22 @@ select:required:invalid {
     width: 10%;
 }
 
+#login_content .input-group{
+    margin-bottom: 10px;
+}
+
+#login_content p{
+    display: none;
+    font-size: 0.8em;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    background: red;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: none;
+}
+
 /* End of registration css */
 /* Start of choice css */
 .overlay {
