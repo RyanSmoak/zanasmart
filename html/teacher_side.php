@@ -44,27 +44,7 @@ session_start();
             </div>
 
             <ul class="menu_items submenu">
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-            </ul>
-          </li>
-          <!-- end -->
-          <li class="item">
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class="bx bx-grid-alt"></i>
-              </span>
-              <span class="navlink">Overview</span>
-              <i class="bx bx-chevron-right arrow-left"></i>
-            </div>
-
-            <ul class="menu_items submenu">
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
+              <a href="teacher_side.php" class="nav_link sublink">About Me</a>
             </ul>
           </li>
           <!-- end -->
@@ -81,19 +61,11 @@ session_start();
             </a>
           </li>
           <li class="item">
-            <a href="examination.html" class="nav_link">
+            <a href="examination.php" class="nav_link">
               <span class="navlink_icon">
                 <i class="bx bx-cloud-upload"></i>
               </span>
               <span class="navlink">Create examination</span>
-            </a>
-          </li>
-          <li class="item">
-            <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bx-edit"></i>
-              </span>
-              <span class="navlink">Review examination</span>
             </a>
           </li>
         </ul>
@@ -135,7 +107,7 @@ session_start();
     <div class="welcome_page">
       <div class="welcome_content">
         <h1>Welcome, </h1>
-        <p><?php echo $_SESSION['first_name']; ?></p>
+        <p><?php echo $_SESSION['title']; echo'. ' ; echo $_SESSION['first_name'];echo' ' ; echo $_SESSION['last_name'] ?></p>
       </div>
     <!-- JavaScript -->
     <script src="../js/exam_script.js"></script>

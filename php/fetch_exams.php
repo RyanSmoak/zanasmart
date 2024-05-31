@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 $exams = [];
 //To fetch all questions in the question_paper table
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $sql = "SELECT * FROM exams";
+    $sql = "SELECT * FROM created_exams";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
@@ -28,9 +28,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         echo "0 results";
     }
 }
-//sample record
-/*
-[{"exam_number":"1","school_name":"Sunshine Secondary","exam_title":"CRE Form 1 exam","subject":"CRE","grade_form":"1","total_marks":"100","duration":"00:00:02","set_date":"2024-05-21","due_date":"2024-05-22","instructions":"Some words","completed":"0"},
-*/
 echo json_encode($exams);
 ?>

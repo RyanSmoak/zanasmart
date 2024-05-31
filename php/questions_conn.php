@@ -16,25 +16,33 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $exam_id=$_POST['exam_id'];
-    $question_num = $_POST["question_num"];
-    $question_alp = $_POST["question_alp"];
-    $question = $_POST["question"];
-    $answer_scheme = $_POST["answer_scheme"];
+$questions_json = $_POST['questions'];
+$questions = json_decode($questions_json, true);
 
-    $sql = "INSERT INTO question_paper (exam_id,question_num, question_alp, question, answer_scheme)
-    VALUES ('$exam_id','$question_num', '$question_alp', '$question', '$answer_scheme')";
+// Iterate over the array of questions
+foreach ($questions as $question_each) {
+    // Extract question details
+    $exam_id = $question_each['exam_id'];
+    $question_num = $question_each['question_num'];
+    $question_alp = $question_each['question_alp'];
+    $question_type = $question_each['question_type'];
+    $question = $question_each['question'];
+    $answer_scheme = $question_each['answer_scheme'];
 
-    if ($conn->query($sql) === TRUE) {
-        $response['status']=1;
-        $response['message']='New Exam Created. Click Start Setting to go to setting page';
-        echo json_encode($response);
-    } else {
-        //echo "Error: " . $sql . "<br>" . $conn->error;
-        $response['status']=0;
-        $response['message']='Error: ' . $sql . "<br>" . $conn->error;
-        echo json_encode($response);
+    if($question !== NULL){
+        $sql = "INSERT INTO question_paper (exam_id,question_num, question_alp, question, answer_scheme)
+        VALUES ('$exam_id','$question_num', '$question_alp', '$question', '$answer_scheme')";
+
+        if ($conn->query($sql) === TRUE) {
+            $response['status']=1;
+            $response['message']='New Exam Created.';
+            echo json_encode($response);
+        } else {
+            //echo "Error: " . $sql . "<br>" . $conn->error;
+            $response['status']=0;
+            $response['message']='Error: ' . $sql . "<br>" . $conn->error;
+            echo json_encode($response);
+        }
     }
 }
 

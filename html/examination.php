@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -76,14 +81,6 @@
               <span class="navlink">Create examination</span>
             </a>
           </li>
-          <li class="item">
-            <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bx-edit"></i>
-              </span>
-              <span class="navlink">Review examination</span>
-            </a>
-          </li>
         </ul>
         <ul class="menu_items">
           <div class="menu_title menu_setting"></div>
@@ -126,8 +123,14 @@
             <form action="../php/connection.php" method="POST" enctype="multipart/form-data" id="examForm">
               <div class="form-block" id="exam-form">
                 <div class="form-group">
-                  <label for="exam_no">Exam Number:</label>  
-                  <input type="number" id="exam_no" name="exam_no" placeholder="Exam number" disabled>
+                  <div class="flexbox_label">
+                    <label for="exam_number" id="exam_label">Exam Number:</label>
+                    <label for="teacher_id" id="license_label">License No:</label>
+                  </div>
+                  <div class="flexbox">
+                    <input type="number" id="exam_no" name="exam_no" placeholder="Exam number" disabled> 
+                    <input type="text" id="teacher_id" name="teacher_id" placeholder=<?php  echo $_SESSION['license'];?> required disabled>
+                  </div>  
                   <label for="school_name">School:</label>
                   <input type="text" id="school_name" name="school_name" placeholder="School Name">
                   <label for="exam_title">Examination Title:</label>
@@ -145,10 +148,15 @@
                   <input type="text" id="total_marks" name="total_marks" placeholder="Total Marks">
                   <label for="duration">Duration:</label>
                   <input type="number" id="duration" name="duration" placeholder="Exam Duration(hours)">
-                  <label for="set_date">Set Date:</label>
-                  <input type="date" id="set_date" name="set_date">
-                  <label for="due_date">Due Date:</label>
-                  <input type="date" id="due_date" name="due_date">
+                  
+                  <div class="flexbox_label" id="dates">
+                    <label for="set_date">Set Date:</label>
+                    <label for="due_date">Due Date:</label>
+                  </div>
+                  <div class="flexbox">
+                    <input type="date" id="set_date" name="set_date">
+                    <input type="date" id="due_date" name="due_date">
+                  </div>
                   <label for="completed">Status:</label>
                   <select id="completed" name="completed" required>
                     <option value="Set">Set</option>
@@ -177,6 +185,8 @@
     </section>
     <!-- JavaScript -->
     <script src="../js/exam_script.js"></script>
+    <script>
+      
     <script>
       window.onload=()=>{
         document.getElementById('examForm').addEventListener('submit', function(e) {

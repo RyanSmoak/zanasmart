@@ -17,6 +17,8 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Collect the data from the form
+    $license_id = $_SESSION['license'];
     $school_name = $_POST["school_name"];
     $exam_title = $_POST["exam_title"];
     $subject = $_POST["subject"];
@@ -28,8 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $instructions = $_POST["instructions"];
     $completed = $_POST["completed"];
 
-    $sql = "INSERT INTO exams (school_name, exam_title, subject, grade_form, total_marks, duration, set_date, due_date, instructions, completed)
-    VALUES ('$school_name', '$exam_title', '$subject', '$grade_form', '$total_marks', '$duration', '$set_date', '$due_date', '$instructions', '$completed')";
+    $sql = "INSERT INTO created_exams (license_id, school_name, exam_title, subject, grade_form, total_marks, duration, set_date, due_date, instructions, completed)
+    VALUES ('$license_id', '$school_name', '$exam_title', '$subject', '$grade_form', '$total_marks', '$duration', '$set_date', '$due_date', '$instructions', '$completed')";
 
     if ($conn->query($sql) === TRUE) {
         $response['status']=1;

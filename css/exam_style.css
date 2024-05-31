@@ -308,6 +308,27 @@ div.form-group {
     font-family: "Poppins", sans-serif;
 }
 
+div.flexbox{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 9%;
+}
+
+.flexbox_label{
+    display: flex;
+    width: 100%;
+    margin-right: 5%;
+    gap: 21%;
+}
+
+#dates{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 35%;
+}
+
 div.form-group label {text-align: right;}
 div.form-group label:after { content: " "; }
 div.form-group input{
@@ -454,8 +475,7 @@ div.question-block{
   margin-left: 0%;
 }
 
-
-#generate_answer, #add_question{
+#generate_answer{
   background-color: #4070f4;
   color: white;
   align-self: flex-end;
@@ -470,6 +490,28 @@ div.question-block{
   cursor: pointer;
 }
 
+.control{
+  display: flex;
+  justify-content: space-between;
+  gap:3%;
+}
+
+#add_question, #previous, #next, #add_question, #submit{
+  width: 70%;
+  background-color: #4070f4;
+  color: white;
+  padding: 10px;
+  margin-top: 3%;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#add_question:hover, #previous:hover, #next:hover, #add_question:hover, #submit:hover{
+  background-color: #4070f4ca;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
 
 .float-container {
   overflow: hidden;
@@ -479,6 +521,8 @@ div.question-block{
 
 .q_box{
   float:left;
+  height: 400px;
+  overflow-y: scroll;
 }
 
 .box{

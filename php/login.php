@@ -60,6 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = "SELECT * FROM teachers WHERE email = '$email'";
         $result = $conn->query($query);
         $row = $result->fetch_assoc();
+        $_SESSION['license'] = $row['license_no'];
         $_SESSION['email'] = $row['email'];
         $_SESSION['title'] = $row['title'];
         $_SESSION['first_name'] = $row['first_name'];
