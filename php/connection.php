@@ -25,13 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $grade_form = $_POST["grade_form"];
     $total_marks = $_POST["total_marks"];
     $duration = $_POST["duration"];
+    $duration_hours = $duration * 6000;
     $set_date = $_POST["set_date"];
     $due_date = $_POST["due_date"];
     $instructions = $_POST["instructions"];
     $completed = $_POST["completed"];
 
     $sql = "INSERT INTO created_exams (license_id, school_name, exam_title, subject, grade_form, total_marks, duration, set_date, due_date, instructions, completed)
-    VALUES ('$license_id', '$school_name', '$exam_title', '$subject', '$grade_form', '$total_marks', '$duration', '$set_date', '$due_date', '$instructions', '$completed')";
+    VALUES ('$license_id', '$school_name', '$exam_title', '$subject', '$grade_form', '$total_marks', '$duration_hours', '$set_date', '$due_date', '$instructions', '$completed')";
 
     if ($conn->query($sql) === TRUE) {
         $response['status']=1;
@@ -53,6 +54,8 @@ function get_last_id($conn){
     return $row['LAST_INSERT_ID()'];
 }
 $_SESSION['exam_id']=get_last_id($conn);
+$_SESSION['exam_title']=$exam_title;
+$_SESSION['total_marks'] = $total_marks;
 
 $conn->close();
 

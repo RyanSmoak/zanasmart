@@ -333,3 +333,64 @@ body.dark {
     margin-left: 17%;
     box-sizing: border-box;
 }
+
+.exam_title{
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--grey-color);
+  font-family: "Poppins", sans-serif;
+  margin-top: 30px;
+  background-color: white;
+  border-radius: 10px;
+  width: 70%;
+  margin: 0, auto;
+  margin-left: 15%;
+  margin-bottom: 1%;
+  padding:30px;
+}
+
+.exam_container{
+    display: block;
+    align-items: center;
+    margin-top: 10%;
+    margin-left: 50%;
+}
+
+#exam-container{
+  align-items: center;
+  font-family: "Poppins", "sans-serif";
+  background-color: white;
+  border-radius: 10px;
+  width: 75%;
+  padding: 30px;
+}
+
+#exam-container {
+  margin: 0 auto; /* Center the container horizontally */
+  max-width: 800px; /* Set maximum width to avoid stretching across the entire viewport */
+}
+
+#submit-exam{
+    display: block;
+    margin: 0, auto;
+    margin-left: 43%;
+    box-sizing: border-box;
+    width: 15%;
+    background-color: #4070f4;
+    color: white;
+    padding: 10px;
+    margin-top: 3%;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#exam-container textarea {
+  border-radius: 10px; /* Rounded corners */
+  border: 1px solid #ccc; /* Border color */
+  background-color: #f2f2f2; /* Grey background */
+  padding: 10px; /* Padding inside textarea */
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+}

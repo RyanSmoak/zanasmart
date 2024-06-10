@@ -28,10 +28,11 @@ foreach ($questions as $question_each) {
     $question_type = $question_each['question_type'];
     $question = $question_each['question'];
     $answer_scheme = $question_each['answer_scheme'];
+    $marks = $question_each['marks'];
 
     if($question !== NULL){
-        $sql = "INSERT INTO question_paper (exam_id,question_num, question_alp, question, answer_scheme)
-        VALUES ('$exam_id','$question_num', '$question_alp', '$question', '$answer_scheme')";
+        $sql = "INSERT INTO question_paper (exam_id,question_num, question_alp, question, answer_scheme, marks)
+        VALUES ('$exam_id','$question_num', '$question_alp', '$question', '$answer_scheme', '$marks')";
 
         if ($conn->query($sql) === TRUE) {
             $response['status']=1;

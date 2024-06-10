@@ -11,6 +11,7 @@
      document.getElementById('question_type').value = question.question_type;
      document.getElementById('question').value = question.question;
      document.getElementById('answer_scheme').value = question.answer_scheme;
+     document.getElementById('marks').value= question.marks;
  }
 
  //check if form is empty
@@ -30,7 +31,8 @@
          question_alp: document.getElementById('question_alp').value,
          question_type: document.getElementById('question_type').value,
          question: document.getElementById('question').value,
-         answer_scheme: document.getElementById('answer_scheme').value
+         answer_scheme: document.getElementById('answer_scheme').value,
+         marks: document.getElementById('marks').value
      };
 
      // Only save if the form is not empty
@@ -75,6 +77,7 @@
      document.getElementById('question_type').value = 'Points';
      document.getElementById('question').value = '';
      document.getElementById('answer_scheme').value = '';
+     document.getElementById('marks').value='';
  }
 
  // Function to handle the form submission

@@ -186,8 +186,6 @@ session_start();
     <!-- JavaScript -->
     <script src="../js/exam_script.js"></script>
     <script>
-      
-    <script>
       window.onload=()=>{
         document.getElementById('examForm').addEventListener('submit', function(e) {
         e.preventDefault();  // Prevent the form from submitting normally
@@ -198,7 +196,7 @@ session_start();
           method: 'POST',
           body: formData
         })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
           // alert(data);  // Display the response from the server in an alert box
           popup(data);
@@ -219,7 +217,7 @@ session_start();
       {
         let popup=document.getElementById('popup');
         popup.style.display='none';
-        window.location.href="./setting.html";
+        window.location.href="./setting.php";
       }
   
       </script>      

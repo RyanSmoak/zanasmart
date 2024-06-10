@@ -1,3 +1,8 @@
+<?php
+
+session_start()
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,7 +115,7 @@
     </nav>
 
     <div class="exam_title">
-        <p>Exam Title<br></p>
+        <p><?php echo $_SESSION['exam_title'];?> <span class="tab"></span> Total Marks: <?php echo $_SESSION['total_marks'];?></p>
     </div>
 
     <div class="float-container">
@@ -130,11 +135,12 @@
                     <div class="question-block">
                         <div class="form-group" id="question_paper">
                             <label for="exam_id">Exam No.</label>
-                            <input type="number" name="exam_id" id="exam_id" value="1">
+                            <input type="number" name="exam_id" id="exam_id" value=<?php echo $_SESSION['exam_id'];?> placeholder=<?php echo $_SESSION['exam_id'];?> required>
                             <label for="question_num">No.</label>
                             <input type="number" name="question_num" id="question_num" placeholder="Number">
                             <label for="question_alp">Sub</label>
                             <select id="question_alp" name="question_alp">
+                                <option value="none"> </option>
                                 <option value="a">a</option>
                                 <option value="b">b</option>
                                 <option value="c">c</option>
@@ -147,7 +153,9 @@
                                 <option value="Comprehension">Comprehension</option>
                                 <option value="Analysis">Analysis</option>
                                 <option value="Calculation">Calculation</option>
-                            </select><br>
+                            </select>
+                            <label for="marks">Marks</label>
+                            <input type="number" name="marks" id="marks" placeholder="Marks"><br>
                             <label for="question">Question</label>
                             <input type="text" name="question" id="question" placeholder="Question">
                             <label for="answer_scheme">Answer (Add each answer on a new line)</label>
