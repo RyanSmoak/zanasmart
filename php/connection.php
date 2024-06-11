@@ -29,10 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $set_date = $_POST["set_date"];
     $due_date = $_POST["due_date"];
     $instructions = $_POST["instructions"];
-    $completed = $_POST["completed"];
 
-    $sql = "INSERT INTO created_exams (license_id, school_name, exam_title, subject, grade_form, total_marks, duration, set_date, due_date, instructions, completed)
-    VALUES ('$license_id', '$school_name', '$exam_title', '$subject', '$grade_form', '$total_marks', '$duration_hours', '$set_date', '$due_date', '$instructions', '$completed')";
+    $sql = "INSERT INTO created_exams (license_id, school_name, exam_title, subject, grade_form, total_marks, duration, set_date, due_date, instructions)
+    VALUES ('$license_id', '$school_name', '$exam_title', '$subject', '$grade_form', '$total_marks', '$duration_hours', '$set_date', '$due_date', '$instructions')";
 
     if ($conn->query($sql) === TRUE) {
         $response['status']=1;

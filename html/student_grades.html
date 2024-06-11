@@ -30,12 +30,12 @@
         <ul class="menu_items">
           <div class="menu_title menu_dahsboard"></div>
           <li class="item">
-            <div href="student_side.php" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class="bx bx-home-alt"></i>
-              </span>
-              <a> <span href="html\student_side.php" class="navlink">Home</span></a>
-              <i class="bx bx-chevron-right arrow-left"></i>
+            <div href="#" class="nav_link submenu_item">
+                <span class="navlink_icon">
+                  <i class="bx bx-home-alt"></i>
+                </span>
+                <a> <span href="student_side.php" class="navlink">Home</span></a>
+              </div>
             </div>
           </li>
         </ul>
@@ -43,7 +43,7 @@
         <ul class="menu_items">
           <div class="menu_title menu_editor"></div>
           <li class="item">
-            <a href="#" class="nav_link">
+            <a href="student_my_exams.html" class="nav_link">
               <span class="navlink_icon">
                 <img width="20" height="20" src="https://img.icons8.com/external-tulpahn-outline-color-tulpahn/20/external-paper-stack-printing-tulpahn-outline-color-tulpahn.png" alt="external-paper-stack-printing-tulpahn-outline-color-tulpahn"/>
               </span>
@@ -86,17 +86,14 @@
               <table class="exam_table">
                 <thead>
                   <tr>
+                    <th>Student ID</th>
                     <th>Exam Number</th>
-                    <th>School Name</th>
                     <th>Exam Title</th>
                     <th>Subject</th>
                     <th>Grade/Form</th>
+                    <th>Date Done</th>
                     <th>Total Marks</th>
-                    <th>Duration</th>
-                    <th>Set Date</th>
-                    <th>Due Date</th>
-                    <th>Instructions</th>
-                    <th>Completed</th>
+                    <th>Your Marks</th>
                   </tr>
                 </thead>
                 <tbody id="data">
@@ -106,7 +103,7 @@
     </section>
                         
     <!-- JavaScript -->
-    <script src="../js/exam_display.js"></script>
+    <script src="../js/results_display.js"></script>
     <script>
       //function to end session after logout div in pressed
       document.querySelector('.logout').addEventListener('click', function(){

@@ -135,5 +135,12 @@
             </div>    
     <!-- JavaScript -->
     <script src="js/exam_script.js"></script>
+    <script>
+      //function to end session after logout div in pressed
+      document.querySelector('.logout').addEventListener('click', function(){
+        window.location.href = 'login.html';
+        fetch('../php/logout.php');
+      });
+    </script>
   </body>
 </html>

@@ -9,9 +9,8 @@
     <link rel="stylesheet" href="../css/student.css" />
   </head>
   <body>
-    <div id="marksDiv" total="0"></div>
+    
 
-    </div>
     <!-- navbar -->
     <nav class="navbar">
       <div class="logo_item">
@@ -61,26 +60,22 @@
               <span class="navlink">My Grades</span>
             </a>
           </li>
-          <li class="item">
-            <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <img width="20" height="20" src="https://img.icons8.com/ios/50/combo-chart--v1.png" alt="combo-chart--v1"/>
-              </span>
-              <span class="navlink">My Analysis</span>
-            </a>
-          </li>
         </ul>
 
         <!-- Sidebar Open / Close -->
         <div class="bottom_content">
-          <div class="bottom expand_sidebar">
-            <span> Expand</span>
-            <i class='bx bx-log-in' ></i>
-          </div>
-          <div class="bottom collapse_sidebar">
-            <span> Collapse</span>
-            <i class='bx bx-log-out'></i>
-          </div>
+        <div class="logout">
+              <span>Logout</span>
+              <i class='bx bx-log-out' ></i>
+            </div>
+            <div class="bottom expand_sidebar">
+              <span> Expand</span>
+              <i class='bx bx-log-in' ></i>
+            </div>
+            <div class="bottom collapse_sidebar">
+              <span> Collapse</span>
+              <img width="20" height="20" src="https://img.icons8.com/color/48/collapse.png" alt="collapse"/>
+            </div>
         </div>
       </div>
     </nav>
@@ -93,6 +88,26 @@
     <div id="exam-container">
     </div>
     <button id="submit-exam">Submit Exam</button>
+
+    
+    <div class="overlay" id="overlay">
+    <div id="marksDiv" total="0"></div>
+        <div id="loading_container">
+          <div class="loading-dot"></div>
+          <div class="loading-dot"></div>
+          <div class="loading-dot"></div>
+          <div class="loading-dot"></div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script>
+      //function to end session after logout div in pressed
+      document.querySelector('.logout').addEventListener('click', function(){
+        window.location.href = 'login.html';
+        fetch('../php/logout.php');
+      });
+    </script>
 
     <script>
         const examId = new URLSearchParams(window.location.search).get('exam_id');
@@ -117,9 +132,19 @@
 
         // Handle exam submission
         document.getElementById('submit-exam').addEventListener('click', () => {
+           overlay.style.display='block';
+           showLoading();
            mtumizi()
         });
+        
+        //loading animation while waiting for API results
+        function showLoading() {
+            document.getElementById('loading_container').style.display = 'flex';
+        }
 
+        function hideLoading() {
+            document.getElementById('loading_container').style.display = 'none';
+        }
         async function fetchAnswers(studAnswers,examId) {
               studAnswers=JSON.stringify(studAnswers);
               return fetch('./fetchAnswers.php', {
@@ -146,6 +171,10 @@
            const examId = new URLSearchParams(window.location.search).get('exam_id');
            let studAnswers=fetchStudentAnswers()
            let answers=await fetchAnswers(studAnswers,examId);
+  
+           localStorage.setItem('answer_count', `${answers.length}`);
+           localStorage.setItem('total_marks', `${0}`);
+           
            answers.forEach(singleAns => {
               markAnswer(singleAns)
            });
@@ -216,19 +245,74 @@
         //A function to manage the marks that come 
         function manageMarks(marks,qNum,alp)
         {
+          let count =localStorage.getItem('answer_count');
+          let total_marks = localStorage.getItem('total_marks');
+          total_marks = parseInt(total_marks);
+          count=parseInt(count);
           marks=marks.marks;
           let target=document.getElementById('marksDiv')
-          let total=target.getAttribute('total');
-          total=parseInt(total);
-          total+=marks;
-          target.setAttribute('total',total)
+          total_marks+=marks;
+          localStorage.setItem('total_marks', `${total_marks}`);
+
           //Create a span to store marks for a single question
           let span=document.createElement('span')
-          span.textContent=marks
-          span.textContent+=" "+qNum+' '+alp
+          span.innerHTML="Question "+qNum+alp
+          span.innerHTML+=' : ' +marks
+          span.innerHTML+="<br>"
           target.appendChild(span)
+          count--;
+          if(count==0)
+          {
+            //Hide the loading animation
+            hideLoading();
+            //Show the marks
+            toggleMarks()
+            let total_marks_span = document.createElement("span")
+            total_marks_span.innerHTML="<br><br>Total Marks : "+total_marks
+            target.appendChild(total_marks_span)
+            //To save marks
+            saveMarks();
+          }
+          localStorage.setItem('answer_count', `${count}`);
         }
 
+        function toggleMarks()
+        {
+          let target=document.getElementById('marksDiv')
+          if(target.style.display=='block')
+          {
+            target.style.display='none'
+          }
+          else
+          {
+            target.style.display='block'
+          }
+        }
+
+        function saveMarks()
+        {
+          //Get the marks and save the data in the database
+          //exam_number
+          //student_marks
+          const examId = new URLSearchParams(window.location.search).get('exam_id');
+          let student_marks=localStorage.getItem('total_marks')
+          student_marks=parseInt(student_marks)
+
+          fetch('../php/saveMarks.php',{
+            method:'POST',
+            headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                  exam_number:examId,
+                  student_marks:student_marks
+              })
+          }).then(response=>{
+            console.log(response)
+          
+          })
+        }
+        
     </script>
     <!-- JavaScript -->
     <script src="../js/exam_script.js"></script>

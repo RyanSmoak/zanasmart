@@ -193,6 +193,17 @@ body.dark {
   cursor: pointer;
   transition: all 0.5s ease;
 }
+.logout{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  text-align: center;
+  color: var(--grey-color);
+  border-top: 1px solid var(--grey-color-light);
+  background-color: var(--white-color);
+}
 .bottom {
   position: absolute;
   display: flex;
@@ -393,4 +404,82 @@ body.dark {
   padding: 10px; /* Padding inside textarea */
   width: 100%; /* Full width */
   box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+
+/*student marks div*/
+.overlay {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  backdrop-filter: blur(5px);
+  z-index: 998; /* Below the popup */
+}
+
+#marksDiv{
+  display: none; /* Initially hidden */
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10vh;
+  left: 5vw;
+  width: 20%;
+  height: fit-content;
+  margin-top: 20%;
+  margin-left: 40%;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  border: black;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  z-index: 20; /* Above the overlay */
+}
+
+#loading_container {
+  display: none; /* Initially hide the loading container */
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: white;
+  background-color: whitesmoke;
+  width: 20%;
+  height: 5%;
+  margin-top: 20%;
+  margin-left: 40%;
+  border-radius: 10px;
+  border: black;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+}
+
+.loading-dot {
+  width: 20px;
+  height: 20px;
+  margin-top: 10px;
+  background-color: var(--blue-color);
+  border-radius: 50%;
+  animation: loader 0.6s infinite alternate;
+}
+
+.loading-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes loader {
+  from {
+      transform: translateY(0);
+      opacity: 1;
+  }
+  to {
+      transform: translateY(-15px);
+      opacity: 0.3;
+  }
 }

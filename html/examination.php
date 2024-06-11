@@ -35,7 +35,7 @@ session_start();
         <ul class="menu_items">
           <div class="menu_title menu_dahsboard"></div>
           <li class="item">
-            <div href="#" class="nav_link submenu_item">
+            <div href="teacher_side.php" class="nav_link submenu_item">
               <span class="navlink_icon">
                 <i class="bx bx-home-alt"></i>
               </span>
@@ -44,24 +44,9 @@ session_start();
             </div>
 
             <ul class="menu_items submenu">
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
+              <a href="teacher_side.php" class="nav_link sublink">About Me</a>
             </ul>
           </li>
-          <!-- end -->
-          <li class="item">
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class="bx bx-grid-alt"></i>
-              </span>
-              <span class="navlink">Overview</span>
-              <i class="bx bx-chevron-right arrow-left"></i>
-            </div>
-
-            <ul class="menu_items submenu">
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-            </ul>
-          </li>
-          <!-- end -->
         </ul>
         <ul class="menu_items">
           <div class="menu_title menu_editor"></div>
@@ -82,35 +67,20 @@ session_start();
             </a>
           </li>
         </ul>
-        <ul class="menu_items">
-          <div class="menu_title menu_setting"></div>
-          <li class="item">
-            <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <img width="20" height="20" src="https://img.icons8.com/pulsar-line/48/exam.png" alt="exam"/>
-              </span>
-              <span class="navlink">Results</span>
-            </a>
-          </li>
-          <li class="item">
-            <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <img width="20" height="20" src="https://img.icons8.com/ios/50/combo-chart--v1.png" alt="combo-chart--v1"/>
-              </span>
-              <span class="navlink">Analysis</span>
-            </a>
-          </li>
-        </ul>
 
         <!-- Sidebar Open / Close -->
         <div class="bottom_content">
+        <div class="logout">
+            <span>Logout</span>
+            <i class='bx bx-log-out' ></i>
+          </div>
           <div class="bottom expand_sidebar">
             <span> Expand</span>
             <i class='bx bx-log-in' ></i>
           </div>
           <div class="bottom collapse_sidebar">
             <span> Collapse</span>
-            <i class='bx bx-log-out'></i>
+            <img width="20" height="20" src="https://img.icons8.com/color/48/collapse.png" alt="collapse"/>
           </div>
         </div>
       </div>
@@ -157,12 +127,6 @@ session_start();
                     <input type="date" id="set_date" name="set_date">
                     <input type="date" id="due_date" name="due_date">
                   </div>
-                  <label for="completed">Status:</label>
-                  <select id="completed" name="completed" required>
-                    <option value="Set">Set</option>
-                    <option value="Done">Done</option>
-                    <option value="Graded">Graded</option>
-                  </select><br>
                   <label for="instructions">Instructions:</label>
                   <textarea name="instructions" id="instructions" cols="100" rows="5" placeholder="Enter instructions"></textarea>
                   <div class="sub_res">
@@ -198,7 +162,6 @@ session_start();
         })
         .then(response => response.json())
         .then(data => {
-          // alert(data);  // Display the response from the server in an alert box
           popup(data);
         })
         .catch(error => {
@@ -221,5 +184,12 @@ session_start();
       }
   
       </script>      
+      <script>
+      //function to end session after logout div in pressed
+      document.querySelector('.logout').addEventListener('click', function(){
+        window.location.href = 'login.html';
+        fetch('../php/logout.php');
+      });
+    </script>
   </body>
 </html>

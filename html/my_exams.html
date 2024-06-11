@@ -39,30 +39,9 @@
             </div>
 
             <ul class="menu_items submenu">
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
+              <a href="teacher_side.php" class="nav_link sublink">About Me</a>
             </ul>
-          </li>
-          <!-- end -->
-          <li class="item">
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class="bx bx-grid-alt"></i>
-              </span>
-              <span class="navlink">Overview</span>
-              <i class="bx bx-chevron-right arrow-left"></i>
-            </div>
-
-            <ul class="menu_items submenu">
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-              <a href="#" class="nav_link sublink">Nav Sub Link</a>
-            </ul>
-          </li>
-          <!-- end -->
+        </li>
         </ul>
 
         <ul class="menu_items">
@@ -84,35 +63,20 @@
             </a>
           </li>
         </ul>
-        <ul class="menu_items">
-          <div class="menu_title menu_setting"></div>
-          <li class="item">
-            <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <img width="20" height="20" src="https://img.icons8.com/pulsar-line/48/exam.png" alt="exam"/>
-              </span>
-              <span class="navlink">Results</span>
-            </a>
-          </li>
-          <li class="item">
-            <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <img width="20" height="20" src="https://img.icons8.com/ios/50/combo-chart--v1.png" alt="combo-chart--v1"/>
-              </span>
-              <span class="navlink">Analysis</span>
-            </a>
-          </li>
-        </ul>
 
         <!-- Sidebar Open / Close -->
         <div class="bottom_content">
+          <div class="logout">
+            <span>Logout</span>
+            <i class='bx bx-log-out' ></i>
+          </div>
           <div class="bottom expand_sidebar">
             <span> Expand</span>
             <i class='bx bx-log-in' ></i>
           </div>
           <div class="bottom collapse_sidebar">
             <span> Collapse</span>
-            <i class='bx bx-log-out'></i>
+            <img width="20" height="20" src="https://img.icons8.com/color/48/collapse.png" alt="collapse"/>
           </div>
         </div>
       </div>
@@ -134,7 +98,6 @@
                     <th>Set Date</th>
                     <th>Due Date</th>
                     <th>Instructions</th>
-                    <th>Completed</th>
                   </tr>
                 </thead>
                 <tbody id="data">
@@ -145,5 +108,12 @@
     <!-- JavaScript -->
     <script src="../js/exam_script.js"></script>
     <script src="../js/teacher_exam.js"></script>
+    <script>
+      //function to end session after logout div in pressed
+      document.querySelector('.logout').addEventListener('click', function(){
+        window.location.href = 'login.html';
+        fetch('../php/logout.php');
+      });
+    </script>
   </body>
 </html>

@@ -10,7 +10,7 @@ session_start()
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Boxicons CSS -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <title>Teacher's side</title>
+    <title>Exam Setting</title>
     <link rel="stylesheet" href="../css/exam_style.css" />
 </head>
 <body>
@@ -35,28 +35,16 @@ session_start()
             <ul class="menu_items">
                 <div class="menu_title menu_dahsboard"></div>
                 <li class="item">
-                    <div href="#" class="nav_link submenu_item">
-                        <span class="navlink_icon">
-                            <i class="bx bx-home-alt"></i>
-                        </span>
-                        <span class="navlink">Home</span>
-                        <i class="bx bx-chevron-right arrow-left"></i>
+                        <div href="#" class="nav_link submenu_item">
+                    <span class="navlink_icon">
+                        <i class="bx bx-home-alt"></i>
+                    </span>
+                    <span class="navlink">Home</span>
+                    <i class="bx bx-chevron-right arrow-left"></i>
                     </div>
+
                     <ul class="menu_items submenu">
-                        <a href="#" class="nav_link sublink">Nav Sub Link</a>
-                    </ul>
-                </li>
-                <!-- end -->
-                <li class="item">
-                    <div href="#" class="nav_link submenu_item">
-                        <span class="navlink_icon">
-                            <i class="bx bx-grid-alt"></i>
-                        </span>
-                        <span class="navlink">Overview</span>
-                        <i class="bx bx-chevron-right arrow-left"></i>
-                    </div>
-                    <ul class="menu_items submenu">
-                        <a href="#" class="nav_link sublink">Nav Sub Link</a>
+                    <a href="teacher_side.php" class="nav_link sublink">About Me</a>
                     </ul>
                 </li>
                 <!-- end -->
@@ -80,36 +68,21 @@ session_start()
                     </a>
                 </li>
             </ul>
-            <ul class="menu_items">
-                <div class="menu_title menu_setting"></div>
-                <li class="item">
-                    <a href="#" class="nav_link">
-                        <span class="navlink_icon">
-                            <img width="20" height="20" src="https://img.icons8.com/pulsar-line/48/exam.png" alt="exam"/>
-                        </span>
-                        <span class="navlink">Results</span>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#" class="nav_link">
-                        <span class="navlink_icon">
-                            <img width="20" height="20" src="https://img.icons8.com/ios/50/combo-chart--v1.png" alt="combo-chart--v1"/>
-                        </span>
-                        <span class="navlink">Analysis</span>
-                    </a>
-                </li>
-            </ul>
 
             <!-- Sidebar Open / Close -->
             <div class="bottom_content">
-                <div class="bottom expand_sidebar">
-                    <span> Expand</span>
-                    <i class='bx bx-log-in' ></i>
-                </div>
-                <div class="bottom collapse_sidebar">
-                    <span> Collapse</span>
-                    <i class='bx bx-log-out'></i>
-                </div>
+            <div class="logout">
+              <span>Logout</span>
+              <i class='bx bx-log-out' ></i>
+            </div>
+            <div class="bottom expand_sidebar">
+              <span> Expand</span>
+              <i class='bx bx-log-in' ></i>
+            </div>
+            <div class="bottom collapse_sidebar">
+              <span> Collapse</span>
+              <img width="20" height="20" src="https://img.icons8.com/color/48/collapse.png" alt="collapse"/>
+            </div>
             </div>
         </div>
     </nav>
@@ -173,10 +146,54 @@ session_start()
                     </div>
                 </form>
             </div>
+            <!-- popup to confirm exam submission -->
+            <div class="popup" id="popup">
+                <div class="popup-content">
+                    <div class="popup-text">
+                        <p>Are you sure you want to submit this exam?</p>
+                    </div>
+                    <div class="popup-buttons">
+                        <button id="yes">Yes</button>
+                        <button id="no">No</button>
+                    </div>
+                </div>
+            </div>
+
         </section>
     </div>
     <!-- JavaScript -->
     <script src="../js/exam_script.js"></script>
     <script src="../js/edit.js"></script>
+    <script>
+        //function to open a confirm popup when submit exam button is clicked
+        document.querySelector('#submit').addEventListener('click', function(){
+            document.querySelector('#popup').style.display = 'block';
+        });
+
+        //function to close the confirm popup when no button is clicked
+        document.querySelector('#no').addEventListener('click', function(){
+            document.querySelector('#popup').style.display = 'none';
+        });
+
+        //function to close the confirm popup when yes button is clicked and take the user back to the exams page
+        document.querySelector('#yes').addEventListener('click', function(){
+            document.querySelector('#popup').style.display = 'none';
+            window.location.href = 'my_exams.html';
+        });
+    </script>
+    <script>
+      //function to end session after logout div in pressed
+      document.querySelector('.logout').addEventListener('click', function(){
+        window.location.href = 'login.html';
+        fetch('../php/logout.php');
+      });
+    </script>
+    <script>
+      //function to end session after logout div in pressed
+      document.querySelector('.logout').addEventListener('click', function(){
+        window.location.href = 'login.html';
+        fetch('../php/logout.php');
+      });
+    </script>
 </body>
 </html>

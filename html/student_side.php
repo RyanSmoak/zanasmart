@@ -56,33 +56,29 @@ session_start();
             </a>
           </li>
           <li class="item">
-            <a href="examination.html" class="nav_link">
+            <a href="student_grades.html" class="nav_link">
               <span class="navlink_icon">
                 <img width="20" height="20" src="https://img.icons8.com/pulsar-line/48/exam.png" alt="exam"/>
               </span>
               <span class="navlink">My Grades</span>
             </a>
           </li>
-          <li class="item">
-            <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <img width="20" height="20" src="https://img.icons8.com/ios/50/combo-chart--v1.png" alt="combo-chart--v1"/>
-              </span>
-              <span class="navlink">My Analysis</span>
-            </a>
-          </li>
         </ul>
 
         <!-- Sidebar Open / Close -->
         <div class="bottom_content">
-          <div class="bottom expand_sidebar">
-            <span> Expand</span>
-            <i class='bx bx-log-in' ></i>
-          </div>
-          <div class="bottom collapse_sidebar">
-            <span> Collapse</span>
-            <i class='bx bx-log-out'></i>
-          </div>
+        <div class="logout">
+              <span>Logout</span>
+              <i class='bx bx-log-out' ></i>
+            </div>
+            <div class="bottom expand_sidebar">
+              <span> Expand</span>
+              <i class='bx bx-log-in' ></i>
+            </div>
+            <div class="bottom collapse_sidebar">
+              <span> Collapse</span>
+              <img width="20" height="20" src="https://img.icons8.com/color/48/collapse.png" alt="collapse"/>
+            </div>
         </div>
       </div>
     </nav>
@@ -116,5 +112,12 @@ session_start();
                         
     <!-- JavaScript -->
     <script src="js/exam_script.js"></script>
+    <script>
+      //function to end session after logout div in pressed
+      document.querySelector('.logout').addEventListener('click', function(){
+        window.location.href = 'login.html';
+        fetch('../php/logout.php');
+      });
+    </script>
   </body>
 </html>
