@@ -26,6 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $teaching_level = $_POST["teaching_level"];
         $email = $_POST["email"];
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    }elseif(isValidPassword($password)){
+        $response['status']=0;
+        $response['message']='Password must be at least 8 characters long and contain at least one special character';
+        echo json_encode($response);
+        exit();
     }else{
         $response['status']=0;
         $response['message']='Passwords do not match';
@@ -46,4 +51,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo json_encode($response);
     }
 }
+
+function isValidPassword($password) {
+    if (strlen($password) < 8) {
+        return false;
+    }
+    if (!preg_match('/[!@#$%^&*(),.?":{}|<>]/', $password)) {
+        return false;
+    }
+    return true;
+}
+
 

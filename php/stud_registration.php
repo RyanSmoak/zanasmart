@@ -27,6 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $year_finish = $_POST["year_finish"];
         $email = $_POST["email"];
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    }elseif(isValidPassword($password)){
+        $response['status']=0;
+        $response['message']='Password must be at least 8 characters long and contain at least one special character';
+        echo json_encode($response);
+        exit();
     }else{
         $response['status']=0;
         $response['message']='Passwords do not match';

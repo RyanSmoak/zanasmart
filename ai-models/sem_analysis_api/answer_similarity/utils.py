@@ -98,8 +98,8 @@ def sem_search_points(
 
 #functionize our semantic search to be used for questions with 'points' type answers
 def analyse_answers(answers_scheme: str, answers_student:str):
-  #marks=  sem_search_points(embed(answer_splitter(answers_scheme)), embed(answer_splitter(answers_student)))
+  marks=  sem_search_points(embed(answer_splitter(answers_scheme)), embed(answer_splitter(answers_student)))
   result = {
-      "marks": 0
+      "marks": marks
   }
   return result
