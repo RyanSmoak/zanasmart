@@ -44,8 +44,8 @@ body.dark {
   display: flex;
   align-items: center;
   column-gap: 10px;
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 30px;
+  font-weight: 700;
   color: var(--blue-color);
 }
 .navbar img {
@@ -193,6 +193,17 @@ body.dark {
   cursor: pointer;
   transition: all 0.5s ease;
 }
+.logout{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  text-align: center;
+  color: var(--grey-color);
+  border-top: 1px solid var(--grey-color-light);
+  background-color: var(--white-color);
+}
 .bottom {
   position: absolute;
   display: flex;
@@ -242,6 +253,11 @@ body.dark {
   .sidebar.close .bottom_content {
     left: -100%;
   }
+}
+
+.welcome_content{
+  margin-left: 40%;
+  margin-top: 10%;
 }
 
 .h1{
@@ -294,6 +310,14 @@ div.form-block{
     margin-left: 30%;
 }
 
+.question {
+  border: 1px solid black;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: var(--blue-color);
+}
+
+
 div.form-group {
     align-items: flex-end;
     grid-gap:15px;
@@ -301,6 +325,27 @@ div.form-group {
     font-weight: 300;
     color: var(--grey-color);
     font-family: "Poppins", sans-serif;
+}
+
+div.flexbox{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 9%;
+}
+
+.flexbox_label{
+    display: flex;
+    width: 100%;
+    margin-right: 5%;
+    gap: 21%;
+}
+
+#dates{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 35%;
 }
 
 div.form-group label {text-align: right;}
@@ -429,9 +474,21 @@ div.form-group input:disabled{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+.tab{
+  display: inline-block;
+  margin-left: 70%;
+}
+
 #question_type{
   flex: 0 0 15%;
-  max-width: 20%;
+  max-width: 17%;
+  box-sizing: border-box;
+  margin-right: 0.5%;
+}
+
+#marks{
+  flex: 0 0 15%;
+  width: 10%;
   box-sizing: border-box;
   margin-right: 0.5%;
 }
@@ -449,8 +506,7 @@ div.question-block{
   margin-left: 0%;
 }
 
-
-#generate_answer, #add_question{
+#generate_answer{
   background-color: #4070f4;
   color: white;
   align-self: flex-end;
@@ -465,6 +521,28 @@ div.question-block{
   cursor: pointer;
 }
 
+.control{
+  display: flex;
+  justify-content: space-between;
+  gap:3%;
+}
+
+#add_question, #previous, #next, #add_question, #submit{
+  width: 70%;
+  background-color: #4070f4;
+  color: white;
+  padding: 10px;
+  margin-top: 3%;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#add_question:hover, #previous:hover, #next:hover, #add_question:hover, #submit:hover{
+  background-color: #4070f4ca;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
 
 .float-container {
   overflow: hidden;
@@ -474,6 +552,8 @@ div.question-block{
 
 .q_box{
   float:left;
+  height: 400px;
+  overflow-y: scroll;
 }
 
 .box{
@@ -554,3 +634,79 @@ div.question-block{
   margin: 5px 0 0 0;
 }
 
+.form-group #exam_id{
+  pointer-events: none;
+  background-color: #3333335f;
+}
+
+#my_exams{
+  width: 85%;
+  margin-left: 14.3%;
+  margin-top: 5px;
+  padding: 15px;
+  transition: all 0.5s ease;
+  border: 0px rgba(0, 0, 0, 0.233); /* add a border */
+  background-color: white;
+  border-style: groove;
+  border-radius: 15px;
+}
+
+.exam_table{
+  width: 100%;
+  margin: 25px 0;
+  border-collapse:collapse;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+table thead tr:first-child th:first-child {
+  border-top-left-radius: 10px;
+}
+
+table thead tr:first-child th:last-child {
+  border-top-right-radius: 10px;
+}
+
+
+
+.exam_table th{
+  margin-top: 0px;
+  padding: 10px;
+  text-align: center;
+}
+
+.exam_table td{
+  text-align: center;
+  background-color: rgba(128, 128, 128, 0.199);
+  padding: 10px;
+}
+
+.exam_table thead tr{
+  background-color: #4070f4b7;
+    color: #ffffff;
+    text-align: center;
+}
+
+.exam_table th, .exam_table td {
+    padding: 12px 15px;
+}
+
+.exam_table tbody tr:nth-of-type(odd) {
+  background-color: #f3f3f3;
+}
+
+.exam_table tbody tr:last-of-type {
+  border-bottom: 2px solid #4070f4b7;
+  border-radius: 10px;
+}
+
+.exam_table tbody tr:hover {
+  background-color: rgba(64, 64, 64, 0.178);
+}
+
+#my_exams h1{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--grey-color);
+    font-family: "Poppins", sans-serif;
+}

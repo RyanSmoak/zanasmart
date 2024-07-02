@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZanaSmart</title>
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <div class="stud-reg">
+    <div class="reg-container">
+        <div class="reg-right">
+            <div class="form-container">
+        <h2>Our students are our future and it's bright!<br>Create an account with us</h2>
+        <p>Don't have an account? It takes less than a minute. If you already have an account <a href="#">Login</a>.</p>
+        <form action="../php/stud_registration.php" method="POST" enctype="multipart/form-data" id="stud_reg_form">
+            <div class="input-group">
+                <input type="text" id="student_id" name="student_id" placeholder="Student ID" required>
+            </div>
+            <div class="input-group">
+                <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+            </div>
+            <div class="input-group">
+                <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+            </div>
+            <div class="input-group">
+                <select name="level_edu" required>
+                    <option value="" disabled selected>Level of Education</option>
+                    <option value="Primary">Primary</option>
+                    <option value="Secondary">Secondary</option>
+                    <option value="Higher_level">Higher Level</option>
+                </select>
+
+                <select name="month_finish" required>
+                    <option value="" disabled selected>Month of Completion</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <input type="text" id="year_finish" name="year_finish" placeholder="Year of Completion" required>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" name="email" placeholder="Email address" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-enter password" required>
+            </div>
+            <button type="submit" class="btn">CREATE ACCOUNT</button>
+        </form>
+        </div>
+        </div>
+
+        <div class="left">
+            <div class="welcome">
+            <img width="100" height="100" src="https://img.icons8.com/pulsar-color/100/raise-a-hand-to-answer.png" alt="raise-a-hand-to-answer"/>
+        <h1>Dear student, <br> Welcome to</h1>
+        <h2>ZanaSmart</h2>
+        <div class="line"></div>
+        <p>
+            We are excited to have you join our learning community. ZanaSmart empowers you with AI-driven tools for a personalized and interactive educational experience.
+            We're excited to have you join our learning community. ZanaSmart offers AI-driven tools for a personalized and interactive educational experience, providing instant feedback and engaging lessons. Connect easily with peers and teachers, and start your journey with smarter learning today!
+        </p><br><br>
+        </div>
+        </div>
+        </div>
+    </div>
+     <!--a pop up to congratulate user on creating an account -->
+     <div class="overlay" id="overlay">
+        <div class="user_choice" id="user_choice">
+            <div class="choice_content">
+                <img src="../images/icons8-congratulations.gif" alt="">
+                <div class="choice-header">
+                    <h2>Welcome to the family!</h2>
+                    <span class="close"></span>
+                    <p>Congratulations! Your account has been created successfully.</p>
+                </div>
+                <div class="choice-footer">
+                    <a href="student_side.html" onclick="close_popup()">Take the next step</a>
+                </div>
+            </div>
+        </div>
+</div>
+<script>
+//a script to display the modal
+        window.onload=()=>{
+            document.getElementById('stud_reg_form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+      
+            fetch('../php/stud_registration.php', {
+            method: 'POST',
+            body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+            // alert(data);  // Display the response from the server in an alert box
+            console.log(data)
+            if (data.status===1){
+                let popup=document.getElementById('user_choice');
+                let overlay = document.getElementById('overlay');
+                overlay.style.display='block';
+                popup.style.display='block';
+            }
+            })
+        });
+        }
+        //a script to close the modal
+        document.querySelector('.choice-footer').addEventListener('click', function(){
+            let popup=document.getElementById('user_choice');
+            overlay.style.display='none';
+            popup.style.display='none';
+        });
+    </script>
+</body>
+<script>
+    //a script to capture response from server and display in a pop up
+    const form = document.getElementById('stud_reg_form');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const response = await fetch('../php/stud_registration.php', {
+            method: 'POST',
+            body: formData
+        });
+        const result = await response.json();
+        alert(result.message);
+    });
+</script>
+</html>
